@@ -11,7 +11,7 @@ const FeedbackData = [
   },
   {
     id: 3,
-    rating: 8,
+    rating: 9,
     text: "Collaboration with you has been a pleasure. Your open communication and willingness to share ideas have fostered a positive working environment.",
   },
 ];
