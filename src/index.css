@@ -126,13 +126,17 @@ input:focus {
   left: -10px;
 }
 
-.close {
+.close,
+.edit {
   position: absolute;
   top: 10px;
   right: 20px;
   cursor: pointer;
   background: none;
   border: none;
+}
+.edit {
+  right: 50px;
 }
 
 .btn {
