@@ -8,6 +8,7 @@ import FeedbackStats from "./components/FeedbackStats";
 import FeedbackForm from "./components/FeedbackForm";
 import AboutPage from "./pages/AboutPage";
 import AboutIcon from "./components/AboutIcon";
+import { FeedbackProvider } from "./context/FeedbackContext";
 function App() {
   const [feedback, setFeedback] = useState(FeedbackData);
   function deleteFeedback(id) {
@@ -16,9 +17,9 @@ function App() {
   const addFeedback = (newFeedback) => {
     setFeedback([newFeedback, ...feedback]);
   };
-  console.log(feedback);
+  // console.log(feedback);
   return (
-    <>
+    <FeedbackProvider>
       <Router>
         <div style={{ position: "relative" }}>
           <Header />
@@ -44,7 +45,7 @@ function App() {
           </div>
         </div>
       </Router>
-    </>
+    </FeedbackProvider>
   );
 }
 
