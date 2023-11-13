@@ -10,12 +10,16 @@ function App() {
   function deleteFeedback(id) {
     setFeedback(feedback.filter((item) => item.id !== id));
   }
+  const addFeedback = (newFeedback) => {
+    setFeedback([newFeedback, ...feedback]);
+  };
+  console.log(feedback);
   return (
     <>
       <div>
         <Header />
         <div className="container">
-          <FeedbackForm />
+          <FeedbackForm handleAddFb={addFeedback} />
           <FeedbackStats feedback={feedback} />
           <FeedbackList feedback={feedback} handleDeleteItem={deleteFeedback} />
         </div>

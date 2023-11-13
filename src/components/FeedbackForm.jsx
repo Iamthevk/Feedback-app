@@ -2,14 +2,15 @@ import Button from "../shared/Button";
 import Card from "../shared/Card";
 import { useState } from "react";
 import SelectRating from "./SelectRating";
-const FeedbackForm = () => {
+import { v4 as idv4 } from "uuid";
+
+const FeedbackForm = ({ handleAddFb }) => {
   const [text, setText] = useState("");
   const [rating, setRating] = useState(5);
   const [message, setMessage] = useState("");
   const [btnDisabled, setBtnDisabled] = useState(false);
 
   const handleUserInput = (e) => {
-    e.preventDefault();
     if (text === "") {
       setMessage(null);
     } else if (text !== "" && text.trim().length <= 10) {
@@ -21,10 +22,22 @@ const FeedbackForm = () => {
     }
     setText(e.target.value);
   };
-  console.log(rating);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let id = idv4();
+
+    const newFeedback = {
+      id,
+      text,
+      rating,
+    };
+    handleAddFb(newFeedback);
+    setText("");
+  };
   return (
     <Card>
-      <form>
+      <form onSubmit={handleSubmit}>
         <h2>How would you rate your service with us</h2>
         <SelectRating select={(rating) => setRating(rating)} />
         <div>
