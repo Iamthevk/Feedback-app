@@ -1,14 +1,16 @@
 import Button from "../shared/Button";
 import Card from "../shared/Card";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import SelectRating from "./SelectRating";
 import { v4 as idv4 } from "uuid";
+import FeedbackContext from "../context/FeedbackContext";
 
-const FeedbackForm = ({ handleAddFb }) => {
+const FeedbackForm = () => {
   const [text, setText] = useState("");
   const [rating, setRating] = useState(5);
   const [message, setMessage] = useState("");
   const [btnDisabled, setBtnDisabled] = useState(false);
+  const { addFeedback } = useContext(FeedbackContext);
 
   const handleUserInput = (e) => {
     if (text === "") {
@@ -32,7 +34,7 @@ const FeedbackForm = ({ handleAddFb }) => {
       text,
       rating,
     };
-    handleAddFb(newFeedback);
+    addFeedback(newFeedback);
     setText("");
   };
   return (

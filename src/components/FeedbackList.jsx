@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import FeedbackItem from "./FeedbackItem";
 import { motion, AnimatePresence } from "framer-motion";
-const FeedbackList = ({ feedback, handleDeleteItem }) => {
+import FeedbackContext from "../context/FeedbackContext";
+const FeedbackList = () => {
+  const { deleteFeedback, feedback } = useContext(FeedbackContext);
   return (
     <div className="feedback-list">
       {feedback.length === 0 ? (
@@ -15,7 +18,7 @@ const FeedbackList = ({ feedback, handleDeleteItem }) => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                <FeedbackItem item={item} handleDeleteItem={handleDeleteItem} />
+                <FeedbackItem item={item} handleDeleteItem={deleteFeedback} />
               </motion.div>
             );
           })}
