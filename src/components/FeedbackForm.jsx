@@ -40,7 +40,7 @@ const FeedbackForm = ({ handleAddFb }) => {
       <form onSubmit={handleSubmit}>
         <h2>How would you rate your service with us</h2>
         <SelectRating select={(rating) => setRating(rating)} />
-        <div>
+        <div className="input-group">
           <input
             type="text"
             placeholder="write a review"
