@@ -24,6 +24,14 @@ export const FeedbackProvider = ({ children }) => {
     });
   };
 
+  //update feedback
+  const updateFeedback = (id, newItem) => {
+    setFeedback(
+      feedback.map((item) => (item.id === id ? { ...item, ...newItem } : item))
+    );
+    feedbackEdit.edit = false;
+  };
+
   //delete feedback
   function deleteFeedback(id) {
     setFeedback(feedback.filter((item) => item.id !== id));
@@ -37,6 +45,7 @@ export const FeedbackProvider = ({ children }) => {
         deleteFeedback,
         editFeedback,
         feedbackEdit,
+        updateFeedback,
       }}
     >
       {children}
